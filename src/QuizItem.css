@@ -1,0 +1,8 @@
+.QuizItem {
+    font-size: 1.5rem;
+}
+
+.QuizItem-title {
+    margin: 0;
+    font-size: inherit;
+}
