@@ -1,7 +1,7 @@
 import { observer } from 'mobx-react';
 
-import toBlockList from "./BlockList";
-import QuizItem from "./QuizItem";
+import {toBlockList} from "../../BlockList";
+import {QuizItem} from "../QuizItem";
 
 let QuizList = toBlockList(QuizItem, "Quizzes");
 QuizList.displayName = "QuizList";

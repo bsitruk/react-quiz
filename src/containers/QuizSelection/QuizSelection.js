@@ -1,8 +1,8 @@
 import React from "react";
 import { observer } from 'mobx-react';
 
-import SectionTitle from "./SectionTitle";
-import QuizList from "./QuizList";
+import {SectionTitle} from "../../components/SectionTitle";
+import {QuizList} from "../../components/Quiz/QuizList";
 
 let QuizSelection = ({ quizzes }) => (
   <div>

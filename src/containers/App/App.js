@@ -1,5 +1,5 @@
 import React from "react";
-import QuizSelection from "./QuizSelection";
+import {QuizSelection} from "../QuizSelection";
 import { observer } from 'mobx-react';
 import DevTools from 'mobx-react-devtools'
 
