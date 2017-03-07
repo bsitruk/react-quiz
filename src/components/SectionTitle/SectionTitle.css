@@ -1,4 +1,4 @@
 .SectionTitle {
-    color: #00BDE8;
+    color: var(--light-blue);
     font-size: 2rem;
 }
