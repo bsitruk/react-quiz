@@ -4,7 +4,7 @@ import "./BlockList.css";
 
 function toBlockList(ItemComponent, title) {
   const BlockList = ({ list }) => {
-    if (list == null) {
+    if (!list.length) {
       return <span>Loading...</span>;
     }
 

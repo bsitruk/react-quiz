@@ -4,10 +4,10 @@ import axios from "axios";
 const endPoint = "http://58bdeca3a0cc651200a4bed3.mockapi.io/api/quizzes";
 
 class QuizStore {
-  @observable _quizzes = null;
+  @observable _quizzes = [];
 
   @computed get quizzes() {
-    if (this._quizzes == null) {
+    if (!this._quizzes.length) {
       this.fetchQuizzesFromServer();
     }
     return this._quizzes;
@@ -24,7 +24,7 @@ class QuizStore {
   }
 
   @action quizzesLoaded(data) {
-    this._quizzes = data;
+    this._quizzes.push(...data);
   }
 }
 
