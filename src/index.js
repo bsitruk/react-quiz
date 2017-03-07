@@ -1,9 +1,20 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import {App} from "./containers/App";
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+import { Provider } from "mobx-react";
 import "./index.css";
 
-import {QuizStore} from "./stores";
+import { App } from "./containers/App";
+import { QuizSelection } from "./containers/QuizSelection";
 
-const quizStore = new QuizStore();
-ReactDOM.render(<App quizStore={quizStore} />, document.getElementById("root"));
+import stores from "./stores";
+
+ReactDOM.render((
+  <Provider {...stores}>
+    <Router history={browserHistory}>
+      <Route path="/" component={App}>
+        <IndexRoute component={QuizSelection}/>
+      </Route>
+    </Router>
+  </Provider>
+), document.getElementById('root'))

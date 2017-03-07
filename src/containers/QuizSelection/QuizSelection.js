@@ -4,10 +4,10 @@ import { observer } from 'mobx-react';
 import {SectionTitle} from "../../components/SectionTitle";
 import {QuizList} from "../../components/Quiz/QuizList";
 
-let QuizSelection = ({ quizzes }) => (
+let QuizSelection = ({ quizStore }) => (
   <div>
     <SectionTitle title="Select a quiz" />
-    <QuizList list={quizzes} />
+    <QuizList list={quizStore.quizzes} />
   </div>
 );
 QuizSelection = observer(QuizSelection);

@@ -1,1 +1,9 @@
-export { default as QuizStore } from "./QuizStore";
+import QuizStore from "./QuizStore";
+
+const quizStore = new QuizStore();
+
+const stores = {
+  quizStore
+};
+
+export default stores;
