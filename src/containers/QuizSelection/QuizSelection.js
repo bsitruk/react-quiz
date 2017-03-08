@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { observer } from "mobx-react";
 
 import { SectionTitle } from "../../components";
-import QuizList from "../../components/Quiz/QuizList/QuizList";
+import { QuizList } from "../../components";
 
 @observer
 class QuizSelection extends Component {
