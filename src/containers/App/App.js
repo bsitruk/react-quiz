@@ -4,7 +4,7 @@ import DevTools from 'mobx-react-devtools'
 
 import "./App.css";
 
-let App = ({ quizStore, children }) => (
+const App = ({ quizStore, children }) => (
   <div className="App">
     <div className="App-header">
       <h1>Hello World !</h1>
@@ -17,6 +17,5 @@ let App = ({ quizStore, children }) => (
     <DevTools />
   </div>
 );
-App = inject("quizStore")(observer(App));
 
-export default App;
+export default inject("quizStore")(observer(App));
