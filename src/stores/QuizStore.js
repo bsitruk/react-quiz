@@ -6,7 +6,7 @@ import { observable, computed, action } from "mobx";
 const quizzesData = [
   {
     id: 1,
-    name: "Quizz 1",
+    title: "Quizz 1",
     description: "My First Quizz",
     questions: [
       {
@@ -29,7 +29,7 @@ const quizzesData = [
   },
   {
     id: 2,
-    name: "Quizz 2",
+    title: "Quizz 2",
     description: "My Second Quizz",
     questions: [
       {

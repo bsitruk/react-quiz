@@ -2,9 +2,9 @@ import React from "react";
 
 import "./QuizItem.css";
 
-const QuizItem = ({name, description}) => (
+const QuizItem = ({title, description}) => (
     <article className="QuizItem">
-        <h2 className="QuizItem-title">{name}</h2>
+        <h2 className="QuizItem-title">{title}</h2>
         <span>{description}</span>
     </article>
 );
