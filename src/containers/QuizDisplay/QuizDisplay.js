@@ -1,8 +1,20 @@
 import React from "react";
+import { observer } from "mobx-react";
 
-const QuizDisplay = ({ quizStore, routeParams }) => {
+let QuizDisplay = ({ quizStore, routeParams }) => {
   const { quizId } = routeParams;
-  return <h1>QuizDisplay {quizId}</h1>;
+  const quiz = quizStore.quizzes.find(q => q.id === +quizId);
+
+  if(!quiz) {
+    return <span>Loading...</span>
+  }
+
+  return (
+    <div>
+
+    </div>
+  );
 };
+QuizDisplay = observer(QuizDisplay);
 
 export default QuizDisplay;

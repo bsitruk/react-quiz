@@ -1,14 +1,12 @@
 import React from "react";
-import classNames from "classnames";
+
+import { Block } from "../Block";
 
 import "./BlockList.css";
 
 function toBlockList(ItemComponent, title) {
   const BlockList = ({ list, onItemClick }) => {
-    const clickable = !!onItemClick;
-    const itemClass = classNames("BlockList-item", {
-      "BlockList-item--clickable": clickable
-    });
+    const focusable = !!onItemClick;
 
     if (!list.length) {
       return <span>Loading...</span>;
@@ -18,11 +16,13 @@ function toBlockList(ItemComponent, title) {
       <ul className="BlockList" data-title={title}>
         {list.map(item => (
           <li
-            className={itemClass}
+            className="BlockList__item"
             key={item.id}
-            onClick={clickable && (() => onItemClick(item.id))}
+            onClick={focusable && (() => onItemClick(item.id))}
           >
-            <ItemComponent {...item} />
+            <Block focusable={focusable}>
+              <ItemComponent {...item} />
+            </Block>
           </li>
         ))}
       </ul>
