@@ -1,11 +1,13 @@
-import React from "react";
+import React, { PureComponent } from "react";
 
-import { observer } from "mobx-react";
+class Header extends PureComponent {
+  render() {
+    return (
+      <div className="App-header">
+        <h1>Hello World !</h1>
+      </div>
+    );
+  }
+}
 
-const Header = () => (
-  <div className="App-header">
-    <h1>Hello World !</h1>
-  </div>
-);
-
-export default observer(Header);
+export default Header;
