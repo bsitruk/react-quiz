@@ -9,8 +9,8 @@ import { Question, QuestionCount } from "../../components";
     const question = quiz.questions[quizState.step];
 
     quizState.answers[question.id] = value;
-    if (quizState.step + 1< quiz.questions.length) {
-        quizState.step++;
+    if (quizState.step + 1 < quiz.questions.length) {
+      quizState.step++;
     }
   };
 

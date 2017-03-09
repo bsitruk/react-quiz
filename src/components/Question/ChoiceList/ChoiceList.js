@@ -5,7 +5,11 @@ import { RadioGroup } from "react-radio-group";
 import { Choice } from "../Choice";
 
 const ChoiceList = ({ question, onAnswerSelected, quizState }) => (
-  <RadioGroup name={`question-${question.id}`} selectedValue={quizState.answers[question.id]} onChange={onAnswerSelected}>
+  <RadioGroup
+    name={`question-${question.id}`}
+    selectedValue={quizState.answers[question.id]}
+    onChange={onAnswerSelected}
+  >
     {question.answers.map(c => <Choice key={c.id} choice={c} />)}
   </RadioGroup>
 );

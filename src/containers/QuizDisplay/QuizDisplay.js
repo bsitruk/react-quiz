@@ -5,8 +5,7 @@ import { observer } from "mobx-react";
 import { Block, SectionTitle } from "../../components";
 import Quiz from "./Quiz";
 
-@observer
-class QuizDisplay extends Component {
+@observer class QuizDisplay extends Component {
   @observable quizState;
 
   constructor(props) {
@@ -23,8 +22,8 @@ class QuizDisplay extends Component {
     const { quizId } = routeParams;
     const quiz = quizStore.quizzes.find(q => q.id === +quizId);
 
-    if(!quiz) {
-      return <span>Loading...</span>
+    if (!quiz) {
+      return <span>Loading...</span>;
     }
 
     return (

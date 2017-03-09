@@ -5,10 +5,14 @@ import { QuestionTitle } from "../";
 import { ChoiceList } from "../";
 
 const Question = ({ question, onAnswerSelected, quizState }) => (
-    <div>
-        <QuestionTitle title={question.question} />
-        <ChoiceList question={question} quizState={quizState} onAnswerSelected={onAnswerSelected} />
-    </div>
+  <div>
+    <QuestionTitle title={question.question} />
+    <ChoiceList
+      question={question}
+      quizState={quizState}
+      onAnswerSelected={onAnswerSelected}
+    />
+  </div>
 );
 
 export default observer(Question);
