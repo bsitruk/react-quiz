@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { observable } from "mobx";
-import { observer } from "mobx-react";
+import { Provider, observer } from "mobx-react";
 
 import { Block, SectionTitle } from "../../components";
 import Quiz from "./Quiz";
@@ -12,25 +12,41 @@ import Quiz from "./Quiz";
     super(props);
     this.quizState = {
       step: 0,
-      answers: {}
+      answers: observable.map(),
+      get loading() {
+        const quiz = props.quizStore.currentQuiz;
+        return !quiz;
+      },
+      get title() {
+        const quiz = props.quizStore.currentQuiz;
+        return quiz && quiz.title;
+      },
+      get counter() {
+        return this.step + 1;
+      },
+      get question() {
+        const quiz = props.quizStore.currentQuiz;
+        return quiz && quiz.questions[this.step];
+      },
+      get total() {
+        const quiz = props.quizStore.currentQuiz;
+        return quiz && quiz.questions.length;
+      }
     };
   }
 
   render() {
-    const { quizStore, routeParams } = this.props;
-
-    const { quizId } = routeParams;
-    const quiz = quizStore.quizzes.find(q => q.id === +quizId);
-
-    if (!quiz) {
+    if (this.quizState.loading) {
       return <span>Loading...</span>;
     }
 
     return (
       <div>
-        <SectionTitle title={quiz.title} />
+        <SectionTitle title={this.quizState.title} />
         <Block>
-          <Quiz quiz={quiz} quizState={this.quizState} />
+          <Provider quizState={this.quizState}>
+            <Quiz quizState={this.quizState} />
+          </Provider>
         </Block>
       </div>
     );

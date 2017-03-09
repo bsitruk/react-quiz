@@ -54,6 +54,7 @@ const quizzesData = [
 
 class QuizStore {
   @observable _quizzes = [];
+  @observable currentQuizId;
 
   @computed get quizzes() {
     if (!this._quizzes.length) {
@@ -63,14 +64,22 @@ class QuizStore {
     return this._quizzes;
   }
 
+  @computed get currentQuiz() {
+    return this.quizzes.find(q => q.id === +this.currentQuizId);
+  }
+
   fetchQuizzesFromServer() {
     return new Promise((resolve, reject) => {
-      setTimeout(() => resolve({data: quizzesData}), 1500);
+      setTimeout(() => resolve({ data: quizzesData }), 1500);
     });
   }
 
   @action quizzesLoaded(data) {
     this._quizzes.push(...data);
+  }
+
+  @action setCurrentQuizId(id) {
+    this.currentQuizId = id;
   }
 }
 

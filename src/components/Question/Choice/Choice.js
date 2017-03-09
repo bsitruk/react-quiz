@@ -1,9 +1,12 @@
 import React from "react";
-import { observer } from "mobx-react";
 import { Radio } from "react-radio-group";
 
-const Choice = ({ choice }) => (
-  <span><Radio value={choice.id} />{choice.value}</span>
+import "./Choice.css";
+
+const Choice = ({ choice, disabled }) => (
+  <div className="Choice">
+    <Radio value={choice.id} disabled={disabled} />{choice.value}
+  </div>
 );
 
-export default observer(Choice);
+export default Choice;

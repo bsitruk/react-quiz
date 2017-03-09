@@ -4,14 +4,10 @@ import { observer } from "mobx-react";
 import { QuestionTitle } from "../";
 import { ChoiceList } from "../";
 
-const Question = ({ question, onAnswerSelected, getSelectedAnswer }) => (
+const Question = ({ question }) => (
   <div>
     <QuestionTitle title={question.question} />
-    <ChoiceList
-      question={question}
-      onAnswerSelected={onAnswerSelected}
-      getSelectedAnswer={getSelectedAnswer}
-    />
+    <ChoiceList question={question} />
   </div>
 );
 

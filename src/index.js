@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+import { Router, Route, IndexRoute, browserHistory } from "react-router";
 import { Provider } from "mobx-react";
 import "./index.css";
 
@@ -10,13 +10,24 @@ import { QuizDisplay } from "./containers/QuizDisplay";
 
 import stores from "./stores";
 
-ReactDOM.render((
+const getRoutes = stores => {
+  const setQuizId = nextState => {
+    stores.quizStore.setCurrentQuizId(nextState.params.quizId);
+  };
+
+  return (
+    <Route path="/" component={App}>
+      <IndexRoute component={QuizSelection} />
+      <Route path="quiz/:quizId" component={QuizDisplay} onEnter={setQuizId} />
+    </Route>
+  );
+};
+
+ReactDOM.render(
   <Provider {...stores}>
     <Router history={browserHistory}>
-      <Route path="/" component={App}>
-        <IndexRoute component={QuizSelection}/>
-        <Route path="quiz/:quizId" component={QuizDisplay} />
-      </Route>
+      {getRoutes(stores)}
     </Router>
-  </Provider>
-), document.getElementById('root'))
+  </Provider>,
+  document.getElementById("root")
+);
