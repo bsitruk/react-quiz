@@ -1,32 +1,41 @@
-import React from "react";
+import React, { Component } from "react";
 import { observable } from "mobx";
 import { observer } from "mobx-react";
 
-import { Block } from "../../components/Block";
-import { Question } from "../../components/Question";
-import { SectionTitle } from "../../components/SectionTitle";
+import { Block, SectionTitle } from "../../components";
+import Quiz from "./Quiz";
 
-const QuizDisplay = ({ quizStore, routeParams }) => {
-  const quizState = observable({
-    step: 0,
-    answers: {}
-  });
+@observer
+class QuizDisplay extends Component {
+  @observable quizState;
 
-  const { quizId } = routeParams;
-  const quiz = quizStore.quizzes.find(q => q.id === +quizId);
-
-  if(!quiz) {
-    return <span>Loading...</span>
+  constructor(props) {
+    super(props);
+    this.quizState = {
+      step: 0,
+      answers: {}
+    };
   }
 
-  return (
-    <div>
-      <SectionTitle title={quiz.title} />
-      <Block>
-        
-      </Block>
-    </div>
-  );
-};
+  render() {
+    const { quizStore, routeParams } = this.props;
 
-export default observer(QuizDisplay);
+    const { quizId } = routeParams;
+    const quiz = quizStore.quizzes.find(q => q.id === +quizId);
+
+    if(!quiz) {
+      return <span>Loading...</span>
+    }
+
+    return (
+      <div>
+        <SectionTitle title={quiz.title} />
+        <Block>
+          <Quiz quiz={quiz} quizState={this.quizState} />
+        </Block>
+      </div>
+    );
+  }
+}
+
+export default QuizDisplay;

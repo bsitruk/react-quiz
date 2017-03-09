@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { observer } from "mobx-react";
 
-import { SectionTitle } from "../../components";
-import { QuizList } from "../../components";
+import { SectionTitle, QuizList } from "../../components";
 
 @observer
 class QuizSelection extends Component {
