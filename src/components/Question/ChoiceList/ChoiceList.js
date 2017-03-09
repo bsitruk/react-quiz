@@ -4,7 +4,7 @@ import { RadioGroup } from "react-radio-group";
 
 import { Choice } from "../Choice";
 
-const ChoiceList = ({ question, onAnswerSelected, getSelectedAnswer, quizState }) => (
+const ChoiceList = ({ question, onAnswerSelected, getSelectedAnswer }) => (
   <RadioGroup
     name={`question-${question.id}`}
     selectedValue={getSelectedAnswer(question.id)}

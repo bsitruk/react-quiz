@@ -12,13 +12,13 @@ import { Question, QuestionCount } from "../../components";
     if (quizState.step + 1 < quiz.questions.length) {
       quizState.step++;
     }
-  }
+  };
 
   getSelectedAnswer = questionId => {
-      const { quiz, quizState } = this.props;
-      const question = quiz.questions[quizState.step];
-      return quizState.answers[question.id]
-  }
+    const { quiz, quizState } = this.props;
+    const question = quiz.questions[quizState.step];
+    return quizState.answers[question.id];
+  };
 
   render() {
     const { quiz, quizState } = this.props;
@@ -30,7 +30,6 @@ import { Question, QuestionCount } from "../../components";
         />
         <Question
           question={quiz.questions[quizState.step]}
-          quizState={quizState}
           onAnswerSelected={this.handleAnswerSelected}
           getSelectedAnswer={this.getSelectedAnswer}
         />
